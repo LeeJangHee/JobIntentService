@@ -26,6 +26,7 @@ const val PROGRESS_UPDATE = "progress_update"
 
 class MainActivity : AppCompatActivity() {
     lateinit var view: View
+    var bool: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         view = findViewById<ConstraintLayout>(R.id.rootView)
         download.setOnClickListener {
             requestPermission()
-
+            bool = false
         }
 
         job_service.setOnClickListener {
@@ -45,7 +46,7 @@ class MainActivity : AppCompatActivity() {
 //            intent.putExtra("inputExtra", "abc")
 //            ExampleJobIntentService.enqueueWork(this, intent)
             requestPermission()
-
+            bool = true
         }
 
         registerReceiver()
@@ -56,7 +57,7 @@ class MainActivity : AppCompatActivity() {
 
         val serviceIntent = Intent(this, ExampleJobIntentService::class.java)
         serviceIntent.putExtra("fileType", FileType.VIDEO.toString())
-        serviceIntent.putExtra("isNotification", true)
+        serviceIntent.putExtra("isNotification", bool)
 
         ExampleJobIntentService.enqueueWork(this, serviceIntent)
     }
