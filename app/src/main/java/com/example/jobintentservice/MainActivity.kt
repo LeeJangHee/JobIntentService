@@ -16,6 +16,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.example.jobintentservice.download.DownloadAndStartApk
 import com.example.jobintentservice.download.DownloadService
 import com.example.jobintentservice.download.ExampleJobIntentService
+import com.example.jobintentservice.download.FileType
 import com.example.jobintentservice.download.RetrofitClient.FILE_URL1
 import kotlinx.android.synthetic.main.main_activity.*
 import java.io.File
@@ -51,11 +52,11 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun enqueueWork(v: View?) {
-        val input = "abc"
+    fun enqueueWork() {
 
         val serviceIntent = Intent(this, ExampleJobIntentService::class.java)
-        serviceIntent.putExtra("inputExtra", input)
+        serviceIntent.putExtra("fileType", FileType.VIDEO.toString())
+        serviceIntent.putExtra("isNotification", true)
 
         ExampleJobIntentService.enqueueWork(this, serviceIntent)
     }
@@ -133,7 +134,7 @@ class MainActivity : AppCompatActivity() {
         when (requestCode) {
             1 -> {
                 if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    enqueueWork(view)
+                    enqueueWork()
                 } else {
                     Toast.makeText(applicationContext, "Permission Denied", Toast.LENGTH_SHORT)
                         .show()
