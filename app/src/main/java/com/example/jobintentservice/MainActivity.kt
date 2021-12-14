@@ -17,7 +17,6 @@ import com.example.jobintentservice.download.DownloadAndStartApk
 import com.example.jobintentservice.download.DownloadService
 import com.example.jobintentservice.download.ExampleJobIntentService
 import com.example.jobintentservice.download.FileType
-import com.example.jobintentservice.download.RetrofitClient.FILE_URL1
 import kotlinx.android.synthetic.main.main_activity.*
 import java.io.File
 
