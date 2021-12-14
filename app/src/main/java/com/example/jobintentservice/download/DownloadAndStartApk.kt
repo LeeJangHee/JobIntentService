@@ -27,7 +27,7 @@ class DownloadAndStartApk {
         val file =
             File(
                 Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
-                RetrofitClient.FILE_URL1
+                RetrofitClient.FILE_URL
             )
 
         val apkUri: Uri = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
