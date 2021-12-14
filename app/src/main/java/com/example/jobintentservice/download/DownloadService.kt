@@ -12,8 +12,6 @@ import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.example.jobintentservice.PROGRESS_UPDATE
-import com.example.jobintentservice.download.RetrofitClient.FILE_URL1
-import com.example.jobintentservice.download.RetrofitClient.FILE_URL3
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -52,7 +50,7 @@ class DownloadService() : IntentService("downloadService") {
             .setAutoCancel(true)
         notificationManager?.notify(0, notificationBuilder?.build())
 
-        val request = RetrofitClient.getInstance().create(RetrofitService::class.java).downloadFile(FILE_URL1)
+        val request = RetrofitClient.getInstance().create(RetrofitService::class.java).downloadFile(FILE_URL)
 
         try {
             CoroutineScope(Dispatchers.IO).async {
