@@ -69,7 +69,7 @@ class DownloadService() : IntentService("downloadService") {
         val inputStream = BufferedInputStream(body.byteStream(), 1024 * 8)
         val outputFile = File(
             Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).path,
-            FILE_URL1
+            FILE_URL
         )
 
         if (outputFile.exists()) {
