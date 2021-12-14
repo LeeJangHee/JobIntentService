@@ -13,7 +13,6 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.example.jobintentservice.PROGRESS_UPDATE
 import com.example.jobintentservice.TAG
-import com.example.jobintentservice.download.RetrofitClient.FILE_URL1
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -84,7 +83,7 @@ class ExampleJobIntentService : JobIntentService() {
         outputDirectory = getOutputDirectory()
 
         val request =
-            RetrofitClient.getInstance().create(RetrofitService::class.java).downloadFile(FILE_URL1)
+            RetrofitClient.getInstance().create(RetrofitService::class.java).downloadFile(FILE_URL)
 
         try {
             CoroutineScope(Dispatchers.IO).async {
